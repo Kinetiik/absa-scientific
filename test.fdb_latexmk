@@ -1,0 +1,17 @@
+# Fdb version 4
+["pdflatex"] 1716915496.37427 "/Users/fynnmadrian/scientific_botnet/test.tex" "test.pdf" "test" 1716915496.87735 0
+  "/Users/fynnmadrian/scientific_botnet/test.tex" 1716915496.09256 70 6a86a3ee7751e06390eda5f56b196a99 ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1710106625 5472554 f7861620179a71a79d4bd86251f559d0 ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1710106625 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/base/article.cls" 1710106625 20144 147463a6a579f4597269ef9565205cfe ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/base/size10.clo" 1710106625 8448 dbc0dbf4156c0bb9ba01a1c685d3bad0 ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1710106625 30006 3d512c0edd558928ddea1690180ef77e ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/web2c/texmf.cnf" 1710106625 41652 e14926ab86fde7902cad99d9eeaa5ca5 ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1710106625 8221866 9aed0a1b2ac5e8bec4cefaf91f11118a ""
+  "test.aux" 1716915496.79966 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "test.tex" 1716915496.09256 70 6a86a3ee7751e06390eda5f56b196a99 ""
+  (generated)
+  "test.aux"
+  "test.log"
+  "test.pdf"
+  (rewritten before read)
