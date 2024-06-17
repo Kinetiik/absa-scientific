@@ -125,38 +125,55 @@ aspect_model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentr
 
 aspect_model.summary()
 
-# Build Sentiment Classification Model
+# Build Sentiment Classification Model with Transformer-like architecture
 sentiment_input = Input(shape=(100,))
 sentiment_embedding = Embedding(input_dim=10000, output_dim=embedding_dim, weights=[embedding_matrix], input_length=100, trainable=False)(sentiment_input)
 
-sentiment_1 = Bidirectional(LSTM(128, return_sequences=True))(sentiment_embedding)
-sentiment_2 = Bidirectional(LSTM(64, return_sequences=True))(sentiment_1)
+sentiment_lstm = Bidirectional(LSTM(128, return_sequences=True))(sentiment_embedding)
+sentiment_attention = MultiHeadAttention(num_heads=8, key_dim=128)(sentiment_lstm, sentiment_lstm)
+sentiment_dropout = Dropout(0.1)(sentiment_attention)
+sentiment_normalization = LayerNormalization(epsilon=1e-6)(sentiment_dropout)
+
+sentiment_lstm_2 = Bidirectional(LSTM(64, return_sequences=True))(sentiment_normalization)
+sentiment_attention_2 = MultiHeadAttention(num_heads=8, key_dim=64)(sentiment_lstm_2, sentiment_lstm_2)
+sentiment_dropout_2 = Dropout(0.1)(sentiment_attention_2)
+sentiment_normalization_2 = LayerNormalization(epsilon=1e-6)(sentiment_dropout_2)
+
+sentiment_lstm_3 = Bidirectional(LSTM(64, return_sequences=True))(sentiment_normalization)
+sentiment_attention_3 = MultiHeadAttention(num_heads=8, key_dim=64)(sentiment_lstm_2, sentiment_lstm_3)
+sentiment_dropout_3 = Dropout(0.1)(sentiment_attention_3)
+sentiment_normalization_3 = LayerNormalization(epsilon=1e-6)(sentiment_dropout_3)
+
+
+sentiment_1 = Dense(128, activation='relu')(sentiment_normalization_3)
+sentiment_2 = Dense(64, activation='relu')(sentiment_1)
+
+# Output Layer
 sentiment_output = Dense(4, activation='softmax')(sentiment_2)
 
 sentiment_model = Model(inputs=sentiment_input, outputs=sentiment_output)
 sentiment_model.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
-sentiment_model.summary()
+
 
 test_padded_reviews, test_aspect_labels, test_sentiment_labels, _, _, _ = convert_data(test_reviews, test_labels, tokenizer, embedding_matrix)
 
 # Train the models
 #aspect_model.fit(padded_reviews, aspect_labels, epochs=100, batch_size=512, validation_data=(test_padded_reviews, test_aspect_labels), callbacks=[callback])
-#sentiment_model.fit(padded_reviews, sentiment_labels, epochs=100, batch_size=512, validation_data=(test_padded_reviews, test_sentiment_labels), callbacks=[callback])
 
 # Save the models
-#aspect_model.save('aspect_model_improved.h5')
-#sentiment_model.save('sentiment_model_improved.h5')
-
+sentiment_model.fit(padded_reviews, sentiment_labels, epochs=100, batch_size=512, validation_data=(test_padded_reviews, test_sentiment_labels))
+sentiment_model.save('sentiment_model_improved.h5')
 sentiment_model = load_model('sentiment_model_improved.h5')
-aspect_model = load_model('aspect_model2.h5')
 
+
+aspect_model = load_model('aspect_model2.h5')
 # Evaluate the models
 aspect_loss, aspect_accuracy = aspect_model.evaluate(test_padded_reviews, test_aspect_labels)
 sentiment_loss, sentiment_accuracy = sentiment_model.evaluate(test_padded_reviews, test_sentiment_labels)
 
 # Predict on a dummy review
-dummy_review = "I like the screen but im not sure about the battery life."
+dummy_review = "the Camera is bad, but the screen is good"
 dummy_review_sequence = tokenizer.texts_to_sequences([dummy_review])
 dummy_review_padded = pad_sequences(dummy_review_sequence, maxlen=100, padding="post")
 
@@ -175,9 +192,6 @@ def interpret_prediction(aspect_prediction, sentiment_prediction, input_text, to
             sentiment += str(np.argmax(sentiment_prob)) + " "
     return aspect, sentiment
 
-print(dummy_review)
-print(aspect_prediction)
-print(sentiment_prediction)
 
 aspect, sentiment = interpret_prediction(aspect_prediction, sentiment_prediction, dummy_review, tokenizer)
 print(f"Predicted aspect: {aspect}")
