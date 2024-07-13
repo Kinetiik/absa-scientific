@@ -1,4 +1,131 @@
-\documentclass{article}
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{microtype}
+
+\title{Aspect-Based Sentiment Analysis: Half the Size, Same Performance?}
+\author{Fynn Madrian \\ Hochschule Ansbach \\ \texttt{f.madrian18230@hs-ansbach.de}}
+\date{\today}
+
 \begin{document}
-Hello, World!
+
+\maketitle
+
+\begin{abstract}
+Dieses Papier untersucht die Bedeutung und die Fortschritte der aspektbasierten Sentiment-Analyse (ABSA), einem spezialisierten Bereich der 
+Sentiment-Analyse, der sich auf die Identifikation und Bewertung von Stimmungen in Bezug auf spezifische Aspekte von Produkten oder Dienstleistungen 
+konzentriert. Im Gegensatz zur traditionellen Sentiment-Analyse bietet ABSA detaillierte Einblicke, indem es Kundenfeedback auf Attributebene 
+analysiert, was für gezielte Verbesserungen und das Verständnis präziser Kundenbedürfnisse von unschätzbarem Wert ist. Die Studie hebt die 
+Anwendung modernster maschineller Lerntechniken hervor, einschließlich bidirektionaler LSTM und Aufmerksamkeitsmechanismen, die auf 
+Benchmark-Datensätzen wie SemEval-2014 Task 4 trainiert wurden. Darüber hinaus werden die Herausforderungen und Potenziale der Implementierung 
+effizienter Mini-Modelle in ressourcenbeschränkten Umgebungen erörtert, die eine vielversprechende Alternative zu großen, rechenintensiven 
+KI-Modellen darstellen. Die Ergebnisse zeigen die Machbarkeit dieser kompakten Modelle bei der Aufrechterhaltung hoher Leistung, insbesondere 
+in Echtzeitanwendungen und Bereichen mit begrenzten Rechenressourcen. Dieses Papier diskutiert auch die breiteren Implikationen 
+von ABSA in verschiedenen Branchen und das Potenzial für zukünftige Forschungen in multimodaler Sentiment-Analyse und mehrsprachigen 
+Anwendungen.\end{abstract}
+
+\section{Einleitung}
+
+In der heutigen digitalen Welt spielen Meinungen und Bewertungen eine zentrale Rolle. Unternehmen, die ihre Produkte und Dienstleistungen verbessern 
+möchten, sind auf das Feedback ihrer Kunden angewiesen. Herkömmliche Methoden der Sentiment-Analyse, die sich auf die allgemeine Stimmung von Texten
+konzentrieren, stoßen jedoch oft an ihre Grenzen. Hier setzt die Aspect-Based Sentiment Analysis (ABSA) an, eine spezialisierte Methode der 
+Sentiment-Analyse, die es ermöglicht, Meinungen und Gefühle auf der Ebene einzelner Aspekte oder Attribute zu identifizieren und zu bewerten.
+\newline
+\newline
+Aspect-Based Sentiment Analysis unterscheidet sich von herkömmlichen Ansätzen, indem sie nicht nur die allgemeine Stimmung eines Textes erfasst, 
+sondern spezifische Elemente und Attribute eines Produkts oder einer Dienstleistung untersucht. Diese differenzierte Betrachtungsweise ist besonders 
+wertvoll, um gezielte Verbesserungen vorzunehmen und spezifische Kundenbedürfnisse zu identifizieren. ABSA nutzt fortschrittliche Techniken des 
+maschinellen Lernens und der natürlichen Sprachverarbeitung, um relevante Aspekte in Texten zu erkennen und die damit verbundenen Stimmungen zu 
+analysieren.
+\newline
+\newline
+Die Anwendungsbereiche von ABSA sind vielfältig und reichen von der Analyse von Produktbewertungen und Kundenfeedback über die Untersuchung von 
+Social-Media-Beiträgen bis hin zur Überwachung der Markenwahrnehmung. In der Geschäftswelt ermöglicht ABSA Unternehmen, präzise Einblicke in die 
+Meinung ihrer Kunden zu gewinnen und gezielte Marketingstrategien zu entwickeln. Im Gesundheitswesen kann sie dazu beitragen, Patientenfeedback zu 
+analysieren und die Qualität der Versorgung zu verbessern. Auch im politischen Bereich findet ABSA Anwendung, um die öffentliche Meinung zu politischen 
+Themen und Persönlichkeiten zu untersuchen.
+\newline
+\newline
+Dieser Bericht beleuchtet die Grundlagen der Aspect-Based Sentiment Analysis, stellt die verschiedenen Techniken und Methoden vor und gibt einen 
+umfassenden Überblick über deren vielseitige Anwendungsbereiche. Ziel ist es, die Bedeutung und den Nutzen von ABSA in verschiedenen Branchen zu 
+verdeutlichen und Einblicke in die zukünftigen Entwicklungen dieser innovativen Technologie zu geben.
+
+\section{Stand der Forschung}
+
+Die Forschung im Bereich der ABSA hat bedeutende Fortschritte gemacht, insbesondere durch die Anwendung von tiefen neuronalen Netzen und 
+Transformer-Modellen wie BERT und RoBERTa. Diese Modelle haben die Genauigkeit und Effizienz der Sentiment-Analyse auf Aspekt-Ebene erheblich 
+verbessert. Aktuelle Ansätze kombinieren oft verschiedene Techniken, darunter maschinelles Lernen, natürliche Sprachverarbeitung und Transfer-Learning, 
+um präzisere Ergebnisse zu erzielen. Benchmark-Datensätze wie SemEval-2014 Task 4 haben als Standard für die Bewertung neuer Methoden gedient und 
+kontinuierlich zur Entwicklung und Verfeinerung der Modelle beigetragen.
+\newline
+\newline
+Trotz der Fortschritte gibt es noch mehrere Untergebiete in der ABSA, die wenig erforscht sind. Dazu gehören die Multimodale Sentiment-Analyse, bei der 
+neben Text auch visuelle und auditive Daten einbezogen werden, sowie die Domänenadaptation, die sich mit der Anpassung von Modellen an unterschiedliche 
+Anwendungsbereiche und Branchen beschäftigt. Ein weiteres unerforschtes Gebiet ist die Analyse von mehrsprachigen Texten und die Entwicklung von 
+Modellen, die Sentiment-Analysen über verschiedene Sprachen hinweg durchführen können. Diese Bereiche bieten viel Potenzial für zukünftige Forschungen 
+und Anwendungen.
+
+\subsection{Mini-Modell}
+
+Moderne KI-Modelle wie BERT und GPT-3 sind leistungsstark, aber auch ressourcenintensiv und erfordern große Rechenkapazitäten.\newline In ressourcenbeschränkten 
+Umgebungen oder Echtzeit-Anwendungen können solche Modelle jedoch ineffizient sein. Eine mögliche Lösung für dieses Problem ist die Entwicklung von 
+Mini-Modellen, die eine ähnliche Leistung wie ihre größeren Gegenstücke bieten, aber mit weniger Rechenressourcen auskommen.
+
+Besonders im Bereich Sprachverarbeitung sind besonders große Modelle notwendig, um optimale Ergebnisse zu erzielen. Die Entwicklung von Mini-Modellen, 
+die die Effizienz und Leistung von KI-Modellen verbessern, ist daher ein vielversprechender Ansatz, um die Anwendung von KI in verschiedenen Bereichen 
+zu fördern. 
+
+ChatGPT 3 benötigt 4,6 kWh pro Inference, was in etwa dem Energieverbrauch eines durchschnittlichen Haushalts in den USA für 3 Stunden entspricht. 
+(STUDIE: ChatGPT Stromverbrauch). Die State-of-the-Art-Modelle im Bereich der Sentiment Analyse basieren ebenfalls häufig auf einer Transformer-Architektur, 
+die eine hohe Rechenkapazität erfordert.
+
+Im Vergleich zur vollen Sprachsynthese können in der Sentiment-Analyse aufgrund der geringeren Komplexität des Problems kleinere Modelle eingesetzt werden. 
+(STUDIE: LSTM + Attention für ABSA). Die Entwicklung von effizienten Mini-Modellen für die Sentiment-Analyse auf Aspekt-Ebene ist daher ein vielversprechender Ansatz,
+um die Leistung und Effizienz von KI-Modellen zu verbessern.
+
+
+Wenig Erforschter aber wichtiger Punkt: Effizienz von KI-Modellen. (STUDIE CHATGPT STROM). Lösung: Kleineres Modell, ähnliche Leistung.
+\subsection{Methodologie}
+
+Verwendeter Datensatz: SemEval-2014: Task4
+Embedding: GloVe (Global Vectors for Word Representation)
+GloVe (Global Vectors for Word Representation) ist ein Modell zur Erzeugung von Wortvektoren, das von Forschern der Stanford University entwickelt wurde. Es kombiniert die Vorteile der Count-basierten und Predict-basierten Methoden zur Wortvektorisierung, indem es globale Wortko-Vorkommensstatistiken aus einem Korpus nutzt. Der grundlegende Ansatz von GloVe besteht darin, eine große Matrix von Wortko-Vorkommenshäufigkeiten zu erstellen, die darstellt, wie oft ein Wort in einem bestimmten Kontext erscheint. Diese Matrix wird dann in eine niedrigdimensionale Vektorrepräsentation zerlegt, wobei die entstandenen Vektoren die semantischen Beziehungen zwischen den Wörtern in hoher Genauigkeit abbilden. Diese Methode ermöglicht es, dass ähnliche Wörter in der Nähe voneinander in dem Vektorraum positioniert werden, wodurch semantische Ähnlichkeiten und Analogien effektiv erfasst werden können.
+
+Ein wesentlicher Vorteil von GloVe ist seine Fähigkeit, sowohl statistische Informationen aus dem gesamten Korpus als auch lokale Kontextinformationen 
+zu integrieren, was zu reichhaltigeren und kontextuell aussagekräftigeren Wortvektoren führt. Im Gegensatz zu reinen Kontextfenster-basierten Modellen 
+wie Word2Vec, das auf lokale Kontextinformationen fokussiert ist, berücksichtigt GloVe die globale Struktur des Korpus. Dies führt dazu, dass 
+GloVe-Vektoren in der Lage sind, subtile semantische Beziehungen und Bedeutungsnuancen besser zu erfassen. Die Effizienz und Genauigkeit der 
+GloVe-Vektoren haben dazu geführt, dass sie in vielen natürlichen Sprachverarbeitungsaufgaben wie Textklassifikation, maschineller Übersetzung und 
+Named Entity Recognition weit verbreitet sind.
+
+Reviews werden geladen, geppadet und in Embeddings umgewandelt. /USE
+
+Erster Ansatz: Bidirektionales LSTM mit TimeDistributed Layer für ABSA
+Zweiter Ansatz: Convolutional Neural Network (CNN) für ABSA
+Dritter Ansatz: LSTM + Attention für ABSA
+
+Ersten Modelle lieferten gute Aspect Extraction, aber schlechte Sentiment Classification. Insbesondere lieferten diese Modelle das gleiche Sentiment 
+für alle Aspekte eines Satzes. Die Review "the screen is great but I hate the battery" wurde Betrachtungsweise als "screen: positive; battery: positive" 
+klassifiziert, obwohl das Sentiment für "battery" negativ sein sollte. Dieses Problem wurde durch die Einführung eines Attention-Mechanismus gelöst, 
+der es dem Modell ermöglicht, die Relevanz jedes Aspekts einzeln zu bewerten und das entsprechende Sentiment zuzuweisen.
+
+\section{Resultate}
+Gute Performance des kleineren Modells, sowohl auf Laptop als auch auf Restaurant Datensatz. (Vergleich mit Modellen aus vorherigen Jahren).
+\subsection{Diskussion}
+Effizienz und Leistung des Mini-Modells im Vergleich zu größeren Modellen. Potenzial für Anwendung in ressourcenbeschränkten Umgebungen und Echtzeit-Anwendungen.
+Ist das Mini-Modell eine gute Alternative für Unternehmen und Entwickler? Welche Faktoren sollten bei der Auswahl eines Modells berücksichtigt werden?
+
+\section{Fazit und Ausblick}
+Aspect-Based Sentiment Analysis ist eine leistungsstarke Methode, um Meinungen und Stimmungen auf der Ebene einzelner Aspekte zu analysieren.
+Die Fortschritte im Bereich des maschinellen Lernens und der natürlichen Sprachverarbeitung haben die Genauigkeit und Effizienz von ABSA-Modellen 
+erheblich verbessert. Die Anwendungsbereiche von ABSA sind vielfältig und reichen von der Analyse von Produktbewertungen bis zur Überwachung der 
+Markenwahrnehmung.
+\begin{thebibliography}{9}
+\bibitem{ref1} Author, "Title of the paper," \textit{Journal Name}, vol. 1, no. 1, pp. 1-10, Year.
+\bibitem{ref2} Author, "Title of the book," Publisher, Year.
+\bibitem{ref3} Author, "Title of the article," \textit{Website}, Available: \url{http://www.website.com}, Accessed on: Date.
+\end{thebibliography}
+
 \end{document}
