@@ -14,7 +14,7 @@
 \maketitle
 
 \begin{abstract}
-Dieses Papier untersucht die Bedeutung und die Fortschritte der aspektbasierten Sentiment-Analyse (ABSA), einem spezialisierten Bereich der 
+Diese Arbeit untersucht die Bedeutung und die Fortschritte der aspektbasierten Sentiment-Analyse (ABSA), einem spezialisierten Bereich der 
 Sentiment-Analyse, der sich auf die Identifikation und Bewertung von Stimmungen in Bezug auf spezifische Aspekte von Produkten oder Dienstleistungen 
 konzentriert. Im Gegensatz zur traditionellen Sentiment-Analyse bietet ABSA detaillierte Einblicke, indem es Kundenfeedback auf Attributebene 
 analysiert, was für gezielte Verbesserungen und das Verständnis präziser Kundenbedürfnisse von unschätzbarem Wert ist. Die Studie hebt die 
@@ -85,11 +85,12 @@ Im Vergleich zur vollen Sprachsynthese können in der Sentiment-Analyse aufgrund
 (STUDIE: LSTM + Attention für ABSA). Die Entwicklung von effizienten Mini-Modellen für die Sentiment-Analyse auf Aspekt-Ebene ist daher ein vielversprechender Ansatz,
 um die Leistung und Effizienz von KI-Modellen zu verbessern.
 
-
 Wenig Erforschter aber wichtiger Punkt: Effizienz von KI-Modellen. (STUDIE CHATGPT STROM). Lösung: Kleineres Modell, ähnliche Leistung.
 \subsection{Methodologie}
 
 Verwendeter Datensatz: SemEval-2014: Task4
+Der SemEval-2014 Task 4 Datensatz ist ein Benchmark-Datensatz, der speziell für die Aspect-Based Sentiment Analysis (ABSA) entwickelt wurde. Dieser Datensatz stammt aus dem SemEval (Semantic Evaluation), einer jährlichen Reihe von Natural Language Processing (NLP) Wettbewerben, die von der Association for Computational Linguistics (ACL) organisiert werden. Task 4 im Jahr 2014 konzentrierte sich auf die Sentiment-Analyse von Kundenbewertungen und umfasste zwei Hauptdomänen: Restaurants und Laptops. Die Daten bestehen aus einer Vielzahl von Kundenrezensionen, die manuell annotiert wurden, um sowohl die relevanten Aspekte (wie "Service" oder "Bildschirm") als auch die dazugehörigen Sentimente (positiv, negativ, neutral) zu kennzeichnen. Diese umfassende Annotierung ermöglicht es Forschern, Modelle zu trainieren und zu evaluieren, die spezifische Meinungen zu einzelnen Aspekten eines Produkts oder einer Dienstleistung erkennen und klassifizieren können. Der SemEval-2014 Task 4 Datensatz dient somit als Standardtest für die Entwicklung und Verfeinerung neuer Methoden in der ABSA und hat wesentlich zur Verbesserung der Modellgenauigkeit und Effizienz in diesem Bereich beigetragen.
+
 Embedding: GloVe (Global Vectors for Word Representation)
 GloVe (Global Vectors for Word Representation) ist ein Modell zur Erzeugung von Wortvektoren, das von Forschern der Stanford University entwickelt wurde. Es kombiniert die Vorteile der Count-basierten und Predict-basierten Methoden zur Wortvektorisierung, indem es globale Wortko-Vorkommensstatistiken aus einem Korpus nutzt. Der grundlegende Ansatz von GloVe besteht darin, eine große Matrix von Wortko-Vorkommenshäufigkeiten zu erstellen, die darstellt, wie oft ein Wort in einem bestimmten Kontext erscheint. Diese Matrix wird dann in eine niedrigdimensionale Vektorrepräsentation zerlegt, wobei die entstandenen Vektoren die semantischen Beziehungen zwischen den Wörtern in hoher Genauigkeit abbilden. Diese Methode ermöglicht es, dass ähnliche Wörter in der Nähe voneinander in dem Vektorraum positioniert werden, wodurch semantische Ähnlichkeiten und Analogien effektiv erfasst werden können.
 
@@ -100,7 +101,16 @@ GloVe-Vektoren in der Lage sind, subtile semantische Beziehungen und Bedeutungsn
 GloVe-Vektoren haben dazu geführt, dass sie in vielen natürlichen Sprachverarbeitungsaufgaben wie Textklassifikation, maschineller Übersetzung und 
 Named Entity Recognition weit verbreitet sind.
 
-Reviews werden geladen, geppadet und in Embeddings umgewandelt. /USE
+Bevor die Daten mit GloVe (Global Vectors for Word Representation) eingebettet werden, müssen sie tokenisiert und gepaddet werden, um sie für die Verarbeitung durch maschinelle Lernmodelle vorzubereiten. 
+
+**Tokenisierung** ist der Prozess, bei dem Text in kleinere Einheiten, sogenannte Token, zerlegt wird. Diese Token können Wörter, Satzzeichen oder andere bedeutungstragende Elemente sein. Der Hauptgrund für die Tokenisierung besteht darin, die natürliche Sprache in eine Form zu bringen, die von Algorithmen und Modellen verarbeitet werden kann. Durch die Tokenisierung werden komplexe Textstrukturen in handhabbare Teile zerlegt, was die Analyse und Modellierung vereinfacht. Zum Beispiel wird der Satz "The screen is great but I hate the battery" in die Token ["The", "screen", "is", "great", "but", "I", "hate", "the", "battery"] zerlegt.
+
+**Padding** hingegen ist notwendig, um sicherzustellen, dass alle Sätze oder Textsequenzen in einem Datensatz die gleiche Länge haben. Maschinelle Lernmodelle, insbesondere neuronale Netze, erfordern häufig Eingaben mit konstanter Länge. Padding fügt spezielle Tokens (oft Nullen oder andere Platzhalter) hinzu, um kürzere Sequenzen auf die maximale Länge im Datensatz zu bringen. Dies ermöglicht eine effiziente Stapelverarbeitung (Batch Processing) und verhindert, dass das Modell durch unterschiedlich lange Eingaben durcheinandergebracht wird. Beispielsweise wird der kürzere Satz "I hate the battery" auf die gleiche Länge wie "The screen is great but I hate the battery" gebracht, indem er mit Platzhaltern ergänzt wird.
+
+Durch die Kombination von Tokenisierung und Padding wird der Text in ein einheitliches Format gebracht, das anschließend von GloVe verwendet werden kann, um Vektorrepräsentationen für jedes Token zu generieren. Diese Schritte sind entscheidend, um die rohen Textdaten in eine strukturierte und maschinenlesbare Form zu überführen, die für die nachfolgende Modellierung und Analyse geeignet ist.
+
+Anschließend werden die jeweiligen Paare and Aspects und Sentiments gefunden und diese in One-Hot-Encodings umgewandelt. Diese ermöglichen dem Modell die Klassifikation der Aspekte und Sentiments.
+
 
 Erster Ansatz: Bidirektionales LSTM mit TimeDistributed Layer für ABSA
 Zweiter Ansatz: Convolutional Neural Network (CNN) für ABSA
