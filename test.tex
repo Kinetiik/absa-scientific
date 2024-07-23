@@ -17,14 +17,23 @@
 Diese Arbeit untersucht die Bedeutung und die Fortschritte der aspektbasierten Sentiment-Analyse (ABSA), einem spezialisierten Bereich der 
 Sentiment-Analyse, der sich auf die Identifikation und Bewertung von Stimmungen in Bezug auf spezifische Aspekte von Produkten oder Dienstleistungen 
 konzentriert. Im Gegensatz zur traditionellen Sentiment-Analyse bietet ABSA detaillierte Einblicke, indem es Kundenfeedback auf Attributebene 
-analysiert, was für gezielte Verbesserungen und das Verständnis präziser Kundenbedürfnisse von unschätzbarem Wert ist. Die Studie hebt die 
-Anwendung modernster maschineller Lerntechniken hervor, einschließlich bidirektionaler LSTM und Aufmerksamkeitsmechanismen, die auf 
-Benchmark-Datensätzen wie SemEval-2014 Task 4 trainiert wurden. Darüber hinaus werden die Herausforderungen und Potenziale der Implementierung 
-effizienter Mini-Modelle in ressourcenbeschränkten Umgebungen erörtert, die eine vielversprechende Alternative zu großen, rechenintensiven 
-KI-Modellen darstellen. Die Ergebnisse zeigen die Machbarkeit dieser kompakten Modelle bei der Aufrechterhaltung hoher Leistung, insbesondere 
-in Echtzeitanwendungen und Bereichen mit begrenzten Rechenressourcen. Dieses Papier diskutiert auch die breiteren Implikationen 
+analysiert, was für gezielte Verbesserungen und das Verständnis präziser Kundenbedürfnisse von unschätzbarem Wert ist. 
+Die Ergebnisse zeigen die Machbarkeit dieser kompakten Modelle bei der Aufrechterhaltung hoher Leistung, insbesondere 
+in Echtzeitanwendungen und Bereichen mit begrenzten Rechenressourcen. Diese Arbeit diskutiert auch die breiteren Implikationen 
 von ABSA in verschiedenen Branchen und das Potenzial für zukünftige Forschungen in multimodaler Sentiment-Analyse und mehrsprachigen 
 Anwendungen.\end{abstract}
+
+\newpage
+
+
+\tableofcontents
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+\setcounter{tocdepth}{4}
+
+
+\newpage 
+
+
 
 \section{Einleitung}
 
@@ -67,7 +76,7 @@ Anwendungsbereiche und Branchen beschäftigt. Ein weiteres unerforschtes Gebiet 
 Modellen, die Sentiment-Analysen über verschiedene Sprachen hinweg durchführen können. Diese Bereiche bieten viel Potenzial für zukünftige Forschungen 
 und Anwendungen.
 
-\subsection{Mini-Modell}
+\section{Mini-Modell}
 
 Moderne KI-Modelle wie BERT und GPT-3 sind leistungsstark, aber auch ressourcenintensiv und erfordern große Rechenkapazitäten.\newline In ressourcenbeschränkten 
 Umgebungen oder Echtzeit-Anwendungen können solche Modelle jedoch ineffizient sein. Eine mögliche Lösung für dieses Problem ist die Entwicklung von 
@@ -76,7 +85,8 @@ Mini-Modellen, die eine ähnliche Leistung wie ihre größeren Gegenstücke biet
 Besonders im Bereich Sprachverarbeitung sind besonders große Modelle notwendig, um optimale Ergebnisse zu erzielen. Die Entwicklung von Mini-Modellen, 
 die die Effizienz und Leistung von KI-Modellen verbessern, ist daher ein vielversprechender Ansatz, um die Anwendung von KI in verschiedenen Bereichen 
 zu fördern. 
-
+\newline
+\newline
 ChatGPT 3 benötigt 4,6 kWh pro Inference, was in etwa dem Energieverbrauch eines durchschnittlichen Haushalts in den USA für 3 Stunden entspricht. 
 (STUDIE: ChatGPT Stromverbrauch). Die State-of-the-Art-Modelle im Bereich der Sentiment Analyse basieren ebenfalls häufig auf einer Transformer-Architektur, 
 die eine hohe Rechenkapazität erfordert.
@@ -86,13 +96,13 @@ Im Vergleich zur vollen Sprachsynthese können in der Sentiment-Analyse aufgrund
 um die Leistung und Effizienz von KI-Modellen zu verbessern.
 
 Wenig Erforschter aber wichtiger Punkt: Effizienz von KI-Modellen. (STUDIE CHATGPT STROM). Lösung: Kleineres Modell, ähnliche Leistung.
-\subsection{Methodologie}
+\section{Methodologie}
 
 Verwendeter Datensatz: SemEval-2014: Task4
 Der SemEval-2014 Task 4 Datensatz ist ein Benchmark-Datensatz, der speziell für die Aspect-Based Sentiment Analysis (ABSA) entwickelt wurde. Dieser Datensatz stammt aus dem SemEval (Semantic Evaluation), einer jährlichen Reihe von Natural Language Processing (NLP) Wettbewerben, die von der Association for Computational Linguistics (ACL) organisiert werden. Task 4 im Jahr 2014 konzentrierte sich auf die Sentiment-Analyse von Kundenbewertungen und umfasste zwei Hauptdomänen: Restaurants und Laptops. Die Daten bestehen aus einer Vielzahl von Kundenrezensionen, die manuell annotiert wurden, um sowohl die relevanten Aspekte (wie "Service" oder "Bildschirm") als auch die dazugehörigen Sentimente (positiv, negativ, neutral) zu kennzeichnen. Diese umfassende Annotierung ermöglicht es Forschern, Modelle zu trainieren und zu evaluieren, die spezifische Meinungen zu einzelnen Aspekten eines Produkts oder einer Dienstleistung erkennen und klassifizieren können. Der SemEval-2014 Task 4 Datensatz dient somit als Standardtest für die Entwicklung und Verfeinerung neuer Methoden in der ABSA und hat wesentlich zur Verbesserung der Modellgenauigkeit und Effizienz in diesem Bereich beigetragen.
 
 Embedding: GloVe (Global Vectors for Word Representation)
-GloVe (Global Vectors for Word Representation) ist ein Modell zur Erzeugung von Wortvektoren, das von Forschern der Stanford University entwickelt wurde. Es kombiniert die Vorteile der Count-basierten und Predict-basierten Methoden zur Wortvektorisierung, indem es globale Wortko-Vorkommensstatistiken aus einem Korpus nutzt. Der grundlegende Ansatz von GloVe besteht darin, eine große Matrix von Wortko-Vorkommenshäufigkeiten zu erstellen, die darstellt, wie oft ein Wort in einem bestimmten Kontext erscheint. Diese Matrix wird dann in eine niedrigdimensionale Vektorrepräsentation zerlegt, wobei die entstandenen Vektoren die semantischen Beziehungen zwischen den Wörtern in hoher Genauigkeit abbilden. Diese Methode ermöglicht es, dass ähnliche Wörter in der Nähe voneinander in dem Vektorraum positioniert werden, wodurch semantische Ähnlichkeiten und Analogien effektiv erfasst werden können.
+GloVe (Global Vectors for Word Representation) ist ein Modell zur Erzeugung von Wortvektoren, das von Forschern der Stanford University entwickelt wurde. Es kombiniert die Vorteile der Count-basierten und Predict-basierten Methoden zur Wortvektorisierung, indem es globale Wortvorkommensstatistiken aus einem Korpus nutzt. Der grundlegende Ansatz von GloVe besteht darin, eine große Matrix von Wortvorkommenshäufigkeiten zu erstellen, die darstellt, wie oft ein Wort in einem bestimmten Kontext erscheint. Diese Matrix wird dann in eine niedrigdimensionale Vektorrepräsentation zerlegt, wobei die entstandenen Vektoren die semantischen Beziehungen zwischen den Wörtern in hoher Genauigkeit abbilden. Diese Methode ermöglicht es, dass ähnliche Wörter in der Nähe voneinander in dem Vektorraum positioniert werden, wodurch semantische Ähnlichkeiten und Analogien effektiv erfasst werden können.
 
 Ein wesentlicher Vorteil von GloVe ist seine Fähigkeit, sowohl statistische Informationen aus dem gesamten Korpus als auch lokale Kontextinformationen 
 zu integrieren, was zu reichhaltigeren und kontextuell aussagekräftigeren Wortvektoren führt. Im Gegensatz zu reinen Kontextfenster-basierten Modellen 
@@ -122,8 +132,14 @@ klassifiziert, obwohl das Sentiment für "battery" negativ sein sollte. Dieses P
 der es dem Modell ermöglicht, die Relevanz jedes Aspekts einzeln zu bewerten und das entsprechende Sentiment zuzuweisen.
 
 \section{Resultate}
-Gute Performance des kleineren Modells, sowohl auf Laptop als auch auf Restaurant Datensatz. (Vergleich mit Modellen aus vorherigen Jahren).
-\subsection{Diskussion}
+
+Das fertige Modell konnte besonders auf dem Laptop Datensatz eine hohe Genauigkeit bei der Aspect Extraction und Sentiment Classification erreichen. Aufgrund der leicht veränderten Ausgabeformats ist ein 1:1 Vergleich zu Modellen der vorherigen Jahre und sehr aufwendige Nachbereitung leider nicht möglich. Die Aspekte im Datensatz sind hierbei nicht streng nach Wörtern, sondern nach kleineren Abschnitten definiert. Beispielsweise findet sich im Testsatz die Review "The Apple engineers have not yet discovered the delete key" mit dem Aspekt "delete key" mit einem negativen Aspekt. Das Modell wiederum hat hierbei "delete" und "key" einzeln als Aspekt erkannt, da das Model nur einzelne Tokens (hier Wörter) klassifizieren kann. Das Ergebniss ist somit zwar korrekt, fällt aber bei automatischer Auswertung als falsch auf.
+Insgesamt gibt es bei dieser Art von Use-Case oft kein richtig oder falsch, da diese Art von Analyse oft subjektiv ist. Eine weitere Review ließt sich wie folgt: "It´s a decent computer for the price and hopefully it will last a long time". Hierbei wurde der Aspekt "price" neutral gelabelt, obwohl dieser genauso als positiv gewertet werden könnte, was das Modell in diesem Fall auch getan hat.
+
+Nach manueller Evaluation auf einem Teil der Testdaten konnte das Modell eine Genauigkeit von 85\% bei der Aspect Extraction und 80\% bei der Sentiment Classification erreichen. Diese Ergebnisse lassen sich ungefähr mit den top Modellen von 2019-2020 vergleichen, welche auf deutlich größeren Modellen basieren. Auch wenn diese Ergebnisse nicht direkt vergleichbar sind, zeigt dies das potenzial von ressourcenschonenden Modellen in der Sprachverarbeitung auf.
+
+
+\section{Diskussion}
 Effizienz und Leistung des Mini-Modells im Vergleich zu größeren Modellen. Potenzial für Anwendung in ressourcenbeschränkten Umgebungen und Echtzeit-Anwendungen.
 Ist das Mini-Modell eine gute Alternative für Unternehmen und Entwickler? Welche Faktoren sollten bei der Auswahl eines Modells berücksichtigt werden?
 
@@ -136,6 +152,7 @@ Markenwahrnehmung.
 \bibitem{ref1} Author, "Title of the paper," \textit{Journal Name}, vol. 1, no. 1, pp. 1-10, Year.
 \bibitem{ref2} Author, "Title of the book," Publisher, Year.
 \bibitem{ref3} Author, "Title of the article," \textit{Website}, Available: \url{http://www.website.com}, Accessed on: Date.
+https://arxiv.org/abs/1906.02243
 \end{thebibliography}
 
 \end{document}

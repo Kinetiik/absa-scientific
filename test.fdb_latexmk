@@ -1,8 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1721725577.40276 "/Users/fynnmadrian/scientific_botnet/test.tex" "test.pdf" "test" 1721725578.2669 0
-  "/Users/fynnmadrian/scientific_botnet/test.tex" 1721725577.10954 14446 1e1742ef73f8fce0d83712a1c3b64a13 ""
+["pdflatex"] 1721746836.09236 "/Users/fynnmadrian/scientific_botnet/test.tex" "test.pdf" "test" 1721746836.62514 0
+  "/Users/fynnmadrian/scientific_botnet/test.tex" 1721746835.35726 15687 22e3a713cf4d271bb49710fe269b644f ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1710106625 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/map/fontname/texfonts.map" 1710106625 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1710106625 5472554 f7861620179a71a79d4bd86251f559d0 ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1710106625 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1710106625 1004 54797486969f23fa377b128694d548df ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1710106625 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1710106625 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -28,6 +30,7 @@
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1710106625 32362 179c33bbf43f19adbb3825bb4e36e57a ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1710106625 36118 fad905eba93cff5bce1e185fe980a177 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb" 1710106625 24252 1e4e051947e12dfb50fee0b7f4e26e3a ""
+  "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb" 1710106625 136101 f533469f523533d38317ab5729d00c8a ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1710106625 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1710106625 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1710106625 40635 c40361e206be584d448876bba8a64a3b ""
@@ -80,12 +83,14 @@
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/url/url.sty" 1710106625 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/web2c/texmf.cnf" 1710106625 41652 e14926ab86fde7902cad99d9eeaa5ca5 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1710106625 8221866 9aed0a1b2ac5e8bec4cefaf91f11118a ""
-  "test.aux" 1721725578.18823 1014 be3cdad969c12fca89d01b86131c0d37 "pdflatex"
-  "test.out" 1721725578.18879 800 1e6d3fb4be906c7eb481080749e52efe "pdflatex"
-  "test.tex" 1721725577.10954 14446 1e1742ef73f8fce0d83712a1c3b64a13 ""
+  "test.aux" 1721746836.57568 984 5497d33938eff5311ae2b6bb1f067c9a "pdflatex"
+  "test.out" 1721746836.57611 758 e6711aecdf3c9af4962b6e32da48a603 "pdflatex"
+  "test.tex" 1721746835.35726 15687 22e3a713cf4d271bb49710fe269b644f ""
+  "test.toc" 1721746836.57634 481 50af0e6731e826e8b3f63134f2e10702 "pdflatex"
   (generated)
   "test.aux"
   "test.log"
   "test.out"
   "test.pdf"
+  "test.toc"
   (rewritten before read)
