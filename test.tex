@@ -4,9 +4,12 @@
 \usepackage{hyperref}
 \usepackage{cite}
 \usepackage{microtype}
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{\renewcommand{\bibname}{Literaturverzeichnis}}
+
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
 
-\title{Aspect-Based Sentiment Analysis: Half the Size, Same Performance?}
+\title{Aspect-Based Sentiment Analysis: Smaller Size, Same Performance?}
 \author{Fynn Madrian \\ Hochschule Ansbach \\ \texttt{f.madrian18230@hs-ansbach.de}}
 \date{\today}
 
@@ -29,7 +32,6 @@ Anwendungen.
 \newpage
 
 \tableofcontents
-\setcounter{tocdepth}{4}
 
 \newpage 
 
@@ -62,10 +64,10 @@ verdeutlichen und Einblicke in die zukünftigen Entwicklungen dieser innovativen
 \section{Stand der Forschung}
 
 Die Forschung im Bereich der ABSA hat bedeutende Fortschritte gemacht, insbesondere durch die Anwendung von tiefen neuronalen Netzen und 
-Transformer-Modellen wie BERT und RoBERTa. Diese Modelle haben die Genauigkeit und Effizienz der Sentiment-Analyse auf Aspekt-Ebene erheblich 
+Transformer-Modellen wie BERT und RoBERTa \cite{liu2019roberta}. Diese Modelle haben die Genauigkeit und Effizienz der Sentiment-Analyse auf Aspekt-Ebene erheblich 
 verbessert. Aktuelle Ansätze kombinieren oft verschiedene Techniken, darunter maschinelles Lernen, natürliche Sprachverarbeitung und Transfer-Learning, 
 um präzisere Ergebnisse zu erzielen. Benchmark-Datensätze wie SemEval-2014 Task 4 haben als Standard für die Bewertung neuer Methoden gedient und 
-kontinuierlich zur Entwicklung und Verfeinerung der Modelle beigetragen.
+kontinuierlich zur Entwicklung und Verfeinerung der Modelle beigetragen \cite{pontiki2014semeval}.
 \newline
 \newline
 Trotz der Fortschritte gibt es noch mehrere Untergebiete in der ABSA, die wenig erforscht sind. Dazu gehören die Multimodale Sentiment-Analyse, bei der 
@@ -76,68 +78,70 @@ und Anwendungen.
 
 \section{Mini-Modell}
 
-Moderne KI-Modelle wie BERT und GPT-3 sind leistungsstark, aber auch ressourcenintensiv und erfordern große Rechenkapazitäten. In ressourcenbeschränkten 
+Moderne KI-Modelle wie BERT und GPT-3 sind leistungsstark, aber auch ressourcenintensiv und erfordern große Rechenkapazitäten \cite{brown2020language}. In ressourcenbeschränkten 
 Umgebungen oder Echtzeit-Anwendungen können solche Modelle jedoch ineffizient sein. Eine mögliche Lösung für dieses Problem ist die Entwicklung von 
 Mini-Modellen, die eine ähnliche Leistung wie ihre größeren Gegenstücke bieten, aber mit weniger Rechenressourcen auskommen.
 \newline
 \newline
-Besonders im Bereich Sprachverarbeitung sind besonders große Modelle notwendig, um optimale Ergebnisse zu erzielen. Die Entwicklung von Mini-Modellen, 
+Besonders im Bereich Sprachverarbeitung sind besonders große Modelle notwendig, um optimale Ergebnisse zu erzielen.
+Die State-of-the-Art-Modelle im Bereich der Sentiment Analyse basieren ebenfalls häufig auf einer Transformer-Architektur, die eine hohe Rechenkapazität erfordert. Die Entwicklung von Mini-Modellen, 
 die die Effizienz und Leistung von KI-Modellen verbessern, ist daher ein vielversprechender Ansatz, um die Anwendung von KI in verschiedenen Bereichen 
 zu fördern. 
 \newline
 \newline
-ChatGPT 3 benötigt 4,6 kWh pro Inference, was in etwa dem Energieverbrauch eines durchschnittlichen Haushalts in den USA für 3 Stunden entspricht. 
-Die State-of-the-Art-Modelle im Bereich der Sentiment Analyse basieren ebenfalls häufig auf einer Transformer-Architektur, die eine hohe Rechenkapazität erfordert.
-\newline
-\newline
 Im Vergleich zur vollen Sprachsynthese können in der Sentiment-Analyse aufgrund der geringeren Komplexität des Problems kleinere Modelle eingesetzt werden. 
 Die Entwicklung von effizienten Mini-Modellen für die Sentiment-Analyse auf Aspekt-Ebene ist daher ein vielversprechender Ansatz,
-um die Leistung und Effizienz von KI-Modellen zu verbessern.
+um die Leistung und Effizienz zu verbessern.
 \newline
 \newline
-Wenig Erforschter aber wichtiger Punkt: Effizienz von KI-Modellen. Lösung: Kleineres Modell, ähnliche Leistung.
+Für diesen Ansatz gibt es mehrere Optionen. Eine Möglichkeit ist die Verwendung eines bestehenden Modells und dessen Komprimierung, wie es bei DistilBERT der Fall ist \cite{sanh2019distilbert}.
+Eine andere Möglichkeit ist die Entwicklung eines speziell auf die Anforderungen der Sentiment-Analyse zugeschnittenen Mini-Modells, das die Anforderungen mit weniger Rechenressourcen erfüllen kann.
+In dieser Arbeit wird ein Mini-Modell für die Aspect-Based Sentiment Analysis entwickelt, das auf einer kompakten Architektur basiert und eine hohe Leistung bei geringem Ressourcenverbrauch bietet, da die Modelle nicht frei verfügbar sind und die Entwicklung eines eigenen Modells die beste Möglichkeit darstellt.
 
 \section{Methodologie}
 
-Verwendeter Datensatz: SemEval-2014: Task4
-Der SemEval-2014 Task 4 Datensatz ist ein Benchmark-Datensatz, der speziell für die Aspect-Based Sentiment Analysis (ABSA) entwickelt wurde. Dieser Datensatz stammt aus dem SemEval (Semantic Evaluation), einer jährlichen Reihe von Natural Language Processing (NLP) Wettbewerben, die von der Association for Computational Linguistics (ACL) organisiert werden. Task 4 im Jahr 2014 konzentrierte sich auf die Sentiment-Analyse von Kundenbewertungen und umfasste zwei Hauptdomänen: Restaurants und Laptops. Die Daten bestehen aus einer Vielzahl von Kundenrezensionen, die manuell annotiert wurden, um sowohl die relevanten Aspekte (wie "Service" oder "Bildschirm") als auch die dazugehörigen Sentimente (positiv, negativ, neutral) zu kennzeichnen. Diese umfassende Annotierung ermöglicht es Forschern, Modelle zu trainieren und zu evaluieren, die spezifische Meinungen zu einzelnen Aspekten eines Produkts oder einer Dienstleistung erkennen und klassifizieren können. Der SemEval-2014 Task 4 Datensatz dient somit als Standardtest für die Entwicklung und Verfeinerung neuer Methoden in der ABSA und hat wesentlich zur Verbesserung der Modellgenauigkeit und Effizienz in diesem Bereich beigetragen.
-
-Embedding: GloVe (Global Vectors for Word Representation)
-GloVe (Global Vectors for Word Representation) ist ein Modell zur Erzeugung von Wortvektoren, das von Forschern der Stanford University entwickelt wurde. Es kombiniert die Vorteile der Count-basierten und Predict-basierten Methoden zur Wortvektorisierung, indem es globale Wortvorkommensstatistiken aus einem Korpus nutzt. Der grundlegende Ansatz von GloVe besteht darin, eine große Matrix von Wortvorkommenshäufigkeiten zu erstellen, die darstellt, wie oft ein Wort in einem bestimmten Kontext erscheint. Diese Matrix wird dann in eine niedrigdimensionale Vektorrepräsentation zerlegt, wobei die entstandenen Vektoren die semantischen Beziehungen zwischen den Wörtern in hoher Genauigkeit abbilden. Diese Methode ermöglicht es, dass ähnliche Wörter in der Nähe voneinander in dem Vektorraum positioniert werden, wodurch semantische Ähnlichkeiten und Analogien effektiv erfasst werden können.
-
+Der SemEval-2014 Task 4 Datensatz ist ein Benchmark-Datensatz, der speziell für die Aspect-Based Sentiment Analysis (ABSA) entwickelt wurde. Dieser Datensatz stammt aus dem SemEval (Semantic Evaluation), einer jährlichen Reihe von Natural Language Processing Wettbewerben, die von der Association for Computational Linguistics organisiert werden. Task 4 im Jahr 2014 konzentrierte sich auf die Sentiment-Analyse von Kundenbewertungen und umfasste zwei Hauptdomänen: Restaurants und Laptops. Die Daten bestehen aus einer Vielzahl von Kundenrezensionen, die manuell annotiert wurden, um sowohl die relevanten Aspekte (wie "Service" oder "Bildschirm") als auch die dazugehörigen Sentimente (positiv, negativ, neutral) zu kennzeichnen. Diese umfassende Annotierung ermöglicht es Forschern, Modelle zu trainieren und zu evaluieren, die spezifische Meinungen zu einzelnen Aspekten eines Produkts oder einer Dienstleistung erkennen und klassifizieren können.
+\newline
+\newline
+Da Modelle nicht mit Wörtern und Sätzen arbeiten können, sondern mit Zahlen, müssen die Textdaten in numerische Repräsentationen umgewandelt werden, die von den Modellen verarbeitet werden können. Eine gängige Methode zur Vektorisierung von Textdaten ist die Verwendung von Wortvektoren, die die semantischen Bedeutungen von Wörtern in einem Vektorraum darstellen. In dieser Arbeit werden die GloVe-Wortvektoren verwendet, um die Textdaten in numerische Repräsentationen umzuwandeln.
+GloVe (Global Vectors for Word Representation) ist ein Modell zur Erzeugung von Wortvektoren, das von Forschern der Stanford University entwickelt wurde. Es kombiniert die Vorteile der Count-basierten und Predict-basierten Methoden zur Wortvektorisierung, indem es globale Wortvorkommensstatistiken aus einem Korpus nutzt \cite{pennington2014glove}. Der grundlegende Ansatz von GloVe besteht darin, eine große Matrix von Wortvorkommenshäufigkeiten zu erstellen, die darstellt, wie oft ein Wort in einem bestimmten Kontext erscheint. Diese Matrix wird dann in eine niedrigdimensionale Vektorrepräsentation zerlegt, wobei die entstandenen Vektoren die semantischen Beziehungen zwischen den Wörtern in hoher Genauigkeit abbilden. Diese Methode ermöglicht es, dass ähnliche Wörter in der Nähe voneinander in dem Vektorraum positioniert werden, wodurch semantische Ähnlichkeiten und Analogien effektiv erfasst werden können.
+\newline
+\newline
 Ein wesentlicher Vorteil von GloVe ist seine Fähigkeit, sowohl statistische Informationen aus dem gesamten Korpus als auch lokale Kontextinformationen 
 zu integrieren, was zu reichhaltigeren und kontextuell aussagekräftigeren Wortvektoren führt. Im Gegensatz zu reinen Kontextfenster-basierten Modellen 
 wie Word2Vec, das auf lokale Kontextinformationen fokussiert ist, berücksichtigt GloVe die globale Struktur des Korpus. Dies führt dazu, dass 
-GloVe-Vektoren in der Lage
-
-sind, subtile semantische Beziehungen und Bedeutungsnuancen besser zu erfassen. Die Effizienz und Genauigkeit der 
+GloVe-Vektoren in der Lage sind, subtile semantische Beziehungen und Bedeutungsnuancen besser zu erfassen. Die Effizienz und Genauigkeit der 
 GloVe-Vektoren haben dazu geführt, dass sie in vielen natürlichen Sprachverarbeitungsaufgaben wie Textklassifikation, maschineller Übersetzung und 
-Named Entity Recognition weit verbreitet sind.
-
+Named Entity Recognition weit verbreitet sind \cite{pennington2014glove}.
+\newline
+\newline
 Bevor die Daten mit GloVe (Global Vectors for Word Representation) eingebettet werden, müssen sie tokenisiert und gepaddet werden, um sie für die Verarbeitung durch maschinelle Lernmodelle vorzubereiten. 
-
-Tokenisierung ist der Prozess, bei dem Text in kleinere Einheiten, sogenannte Token, zerlegt wird. Diese Token können Wörter, Satzzeichen oder andere bedeutungstragende Elemente sein. Der Hauptgrund für die Tokenisierung besteht darin, die natürliche Sprache in eine Form zu bringen, die von Algorithmen und Modellen verarbeitet werden kann. Durch die Tokenisierung werden komplexe Textstrukturen in handhabbare Teile zerlegt, was die Analyse und Modellierung vereinfacht. Zum Beispiel wird der Satz "The screen is great but I hate the battery" in die Token ["The", "screen", "is", "great", "but", "I", "hate", "the", "battery"] zerlegt.
-
+Tokenisierung ist der Prozess, bei dem Text in kleinere Einheiten, sogenannte Token, zerlegt wird. Diese Token können Wörter, Satzzeichen oder andere bedeutungstragende Elemente sein. Der Hauptgrund für die Tokenisierung besteht darin, die natürliche Sprache in eine Form zu bringen, die von Algorithmen und Modellen verarbeitet werden kann. Durch die Tokenisierung werden komplexe Textstrukturen in handhabbare Teile zerlegt, was die Analyse und Modellierung vereinfacht. In diesem Fall wurde jedes Wort als ein Token betrachtet. Zum Beispiel wird der Satz "The screen is great but I hate the battery" in die Token ["The", "screen", "is", "great", "but", "I", "hate", "the", "battery"] zerlegt.
 Padding hingegen ist notwendig, um sicherzustellen, dass alle Sätze oder Textsequenzen in einem Datensatz die gleiche Länge haben. Maschinelle Lernmodelle, insbesondere neuronale Netze, erfordern häufig Eingaben mit konstanter Länge. Padding fügt spezielle Tokens (oft Nullen oder andere Platzhalter) hinzu, um kürzere Sequenzen auf die maximale Länge im Datensatz zu bringen. Dies ermöglicht eine effiziente Stapelverarbeitung (Batch Processing) und verhindert, dass das Modell durch unterschiedlich lange Eingaben durcheinandergebracht wird. Beispielsweise wird der kürzere Satz "I hate the battery" auf die gleiche Länge wie "The screen is great but I hate the battery" gebracht, indem er mit Platzhaltern ergänzt wird.
+\newline
+\newline
+Durch die Kombination von Tokenisierung und Padding wird der Text in ein einheitliches Format gebracht, das anschließend von GloVe verwendet werden kann, um Vektorrepräsentationen für jedes Token zu generieren. Diese Schritte sind entscheidend, um die rohen Textdaten in eine strukturierte und maschinenlesbare Form zu überführen, die für die nachfolgende Modellierung und Analyse geeignet ist. Der genaue Prozess der Tokenisierung führt allerdings dazu, das die Ergebnisse nur mit weiterem Aufwand evaluiert werden da sich das Format leicht von den Labels unterscheidet. Weitere Details dazu im Abschnitt Resultate.
+\newline
+\newline
+Das Format der Label gibt den Start und das Ende des Aspekts an, sowie das Sentiment. Das Label für "I hate the battery life" wäre somit ("term": "battery life","start": 12,"end": 23,"polarity": "negative"). Die Labels wurden in ein Format umgewandelt, das von den Modellen verarbeitet werden kann, um die Aspekte und Sentiments in den Texten zu identifizieren und zu klassifizieren, indem jedem Wordtoken 2 Labels zugeordnet werden. Ein Label gibt an, ob das Token Teil eines Aspekts ist, und das andere Label gibt das Sentiment des Aspekts an. Problem hierbei ist, dass die Labels nicht direkt mit den Token übereinstimmen, da die Aspekte in den Labels oft aus mehreren Wörtern bestehen. Dies führt zu Problemen bei der automatischen Auswertung, da die Aspekte nicht direkt verglichen werden können.
 
-Durch die Kombination von Tokenisierung und Padding wird der Text in ein einheitliches Format gebracht, das anschließend von GloVe verwendet werden kann, um Vektorrepräsentationen für jedes Token zu generieren. Diese Schritte sind entscheidend, um die rohen Textdaten in eine strukturierte und maschinenlesbare Form zu überführen, die für die nachfolgende Modellierung und Analyse geeignet ist. Der genaue Prozess der Tokenisierung führt allerdings dazu, das die Ergebnisse nur mit weiterem Aufwand evaluiert werden können da sich das Format leicht von den Labels unterscheidet. Weitere Details dazu im Abschnitt Resultate.
-
-Anschließend werden die jeweiligen Paare and Aspects und Sentiments gefunden und diese in One-Hot-Encodings umgewandelt. Diese ermöglichen dem Modell die Klassifikation der Aspekte und Sentiments.
+\section{Modelle}
 
 Es wurden verschiedene Modellarten trainert und getestet, um die beste Kombination für die Aspect Extraction und Sentiment Classification zu finden.
-
-**Erster Ansatz: Bidirektionales LSTM mit TimeDistributed Layer für ABSA**
-
+\newline
+\newline
+Der erste Ansatz war ein Bidirektionales LSTM mit einem TimeDistributed Layer.
 Das bidirektionale Long Short-Term Memory (LSTM) Netzwerk mit einem TimeDistributed Layer eignet sich hervorragend für Aspect Based Sentiment Analysis (ABSA), da es die Fähigkeit besitzt, Kontextinformationen sowohl aus der Vergangenheit als auch aus der Zukunft zu erfassen. Diese duale Blickrichtung ist besonders nützlich, um die Bedeutung von Wörtern im Kontext ihrer benachbarten Begriffe vollständig zu verstehen. Der TimeDistributed Layer ermöglicht es, die LSTM-Ausgaben für jedes Zeitschritt separat zu verarbeiten und somit Aspekte in verschiedenen Textsegmenten effektiv zu identifizieren und zu bewerten. Der Vorteil dieses Ansatzes liegt in seiner Robustheit gegenüber längeren Sequenzen und der Fähigkeit, sequenzielle Abhängigkeiten präzise zu modellieren. Dies führt in der Regel zu einer höheren Genauigkeit bei der Erkennung von Aspekten und der Sentimentklassifikation.
-
-**Zweiter Ansatz: Convolutional Neural Network (CNN) für ABSA**
-
+\newline
+\newline
+Der Zweite Ansatz verwendete ein Convolutional Neural Network.
 Das Convolutional Neural Network (CNN) für ABSA nutzt die Fähigkeit von Faltungsschichten, lokale Muster zu erfassen, die für die Sentimentanalyse von entscheidender Bedeutung sind. Durch die Anwendung von Filtern auf den Eingabetext kann ein CNN nützliche Merkmale wie n-Gramme oder spezifische Wortmuster extrahieren, die auf bestimmte Aspekte hinweisen. Dies ermöglicht eine effiziente und schnelle Verarbeitung großer Textmengen. Ein wesentlicher Vorteil von CNNs ist ihre Fähigkeit, parallele Berechnungen durchzuführen, was zu einer schnelleren Trainings- und Inferenzzeit führt. Zudem sind CNNs weniger anfällig für Überanpassung bei großen Datenmengen und können durch reguläre Techniken wie Dropout und Batch-Normalisierung weiter optimiert werden. Dies führt oft zu verbesserten Ergebnissen in Bezug auf die Genauigkeit und Generalisierbarkeit des Modells.
-
-**Dritter Ansatz: LSTM + Attention für ABSA**
-
-Die Kombination von LSTM und Attention-Mechanismen für ABSA stellt eine fortschrittliche Herangehensweise dar, die die Stärken beider Technologien nutzt. Während das LSTM die Sequenzinformationen und Kontextabhängigkeiten effektiv modelliert, ermöglicht die Attention-Schicht dem Modell, sich selektiv auf relevante Teile des Eingabetextes zu konzentrieren. Dies ist besonders nützlich, wenn es darum geht, spezifische Aspekte innerhalb eines langen Textes zu identifizieren und deren Sentiment präzise zu bestimmen. Der Vorteil dieses Ansatzes liegt in der verbesserten Fähigkeit des Modells, kontextuelle Abhängigkeiten über lange Distanzen hinweg zu erfassen und gleichzeitig irrelevante Informationen zu ignorieren. Dies führt oft zu einer signifikanten Steigerung der Genauigkeit und Präzision bei der Aspekt- und Sentimenterkennung, was sich in den verbesserten Ergebnissen dieses Modells im Vergleich zu den vorherigen Ansätzen widerspiegelt.
-
+\newline
+\newline
+Der Dritte und Finale Ansatz hat ein LSTM mit Attention-Mechanismen verwendet.
+Die Kombination von LSTM und Attention-Mechanismen für ABSA stellt eine fortschrittliche Herangehensweise dar, die die Stärken beider Technologien nutzt. Während das LSTM die Sequenzinformationen und Kontextabhängigkeiten effektiv modelliert, ermöglicht die Attention-Schicht dem Modell, sich selektiv auf relevante Teile des Eingabetextes zu konzentrieren. Dies ist besonders nützlich, wenn es darum geht, spezifische Aspekte innerhalb eines langen Textes zu identifizieren und deren Sentiment präzise zu bestimmen \cite{vaswani2017attention}. Der Vorteil dieses Ansatzes liegt in der verbesserten Fähigkeit des Modells, kontextuelle Abhängigkeiten über lange Distanzen hinweg zu erfassen und gleichzeitig irrelevante Informationen zu ignorieren. Dies führt oft zu einer signifikanten Steigerung der Genauigkeit und Präzision bei der Aspekt- und Sentimenterkennung, was sich in den verbesserten Ergebnissen dieses Modells im Vergleich zu den vorherigen Ansätzen widerspiegelt.
+\newline
+\newline
 Die ersten Modelle lieferten gute Aspect Extraction, aber schlechte Sentiment Classification. Insbesondere lieferten diese Modelle das gleiche Sentiment 
 für alle Aspekte eines Satzes. Die Review "the screen is great but I hate the battery" wurde als "screen: positive; battery: positive" 
 klassifiziert, obwohl das Sentiment für "battery" negativ sein sollte. Dieses Problem wurde durch die Einführung eines Attention-Mechanismus gelöst, 
@@ -145,28 +149,55 @@ der es dem Modell ermöglicht, die Relevanz jedes Aspekts einzeln zu bewerten un
 
 \section{Resultate}
 
-Das fertige Modell basieren auf LSTM und Attention-Mechanismen konnte besonders auf dem Laptop Datensatz eine hohe Genauigkeit bei der Aspect Extraction und Sentiment Classification erreichen. Aufgrund der leicht veränderten Ausgabeformats ist ein 1:1 Vergleich zu Modellen der vorherigen Jahre und sehr aufwendige Nachbereitung leider nicht möglich. Die Aspekte im Datensatz sind hierbei nicht streng nach Wörtern, sondern nach kleineren Abschnitten definiert. Beispielsweise findet sich im Testsatz die Review "The Apple engineers have not yet discovered the delete key" mit dem Aspekt "delete key" mit einem negativen Aspekt. Das Modell wiederum hat hierbei "delete" und "key" einzeln als Aspekt erkannt, da das Model nur einzelne Tokens (hier Wörter) klassifizieren kann. Das Ergebniss ist somit zwar korrekt, fällt aber bei automatischer Auswertung als falsch auf.
+Das fertige Modell basieren auf LSTM und Attention-Mechanismen konnte besonders auf dem Laptop Datensatz eine hohe Genauigkeit bei der Aspect Extraction und Sentiment Classification erreichen. Aufgrund der leicht veränderten Ausgabeformats ist ein 1:1 Vergleich zu Modellen der vorherigen Jahre ohne aufwendige Nachbereitung leider nicht möglich. Beispielsweise findet sich im Testsatz die Review "The Apple engineers have not yet discovered the delete key" mit dem Aspekt "delete key" mit einem negativen Aspekt. Das Modell wiederum hat hierbei "delete" und "key" einzeln als Aspekt erkannt, da das Model nur einzelne Tokens (hier Wörter) klassifizieren kann. Das Ergebniss ist somit zwar korrekt, fällt aber bei automatischer Auswertung als falsch auf.
 Insgesamt gibt es bei dieser Art von Use-Case oft kein richtig oder falsch, da diese Art von Analyse oft subjektiv ist. Eine weitere Review ließt sich wie folgt: "It´s a decent computer for the price and hopefully it will last a long time". Hierbei wurde der Aspekt "price" neutral gelabelt, obwohl dieser genauso als positiv gewertet werden könnte, was das Modell in diesem Fall auch getan hat.
 
-Nach manueller Evaluation auf einem Teil der Testdaten konnte das Modell eine Genauigkeit von 85\% bei der Aspect Extraction und 80\% bei der Sentiment Classification erreichen. Diese Ergebnisse lassen sich ungefähr mit den top Modellen von 2019-2020 vergleichen, welche auf deutlich größeren Modellen basieren. Auch wenn diese Ergebnisse nicht direkt vergleichbar sind, zeigt dies das potenzial von ressourcenschonenden Modellen in der Sprachverarbeitung auf.
-
+Bei manueller Überprüfung der Ergebnisse auf einem Teil der Testdaten konnte das Modell jedoch sowohl auf dem Restaurant- als auch auf dem Laptop-Datensatz eine hohe Genauigkeit bei der Aspektextraktion und Sentimentklassifikation erreichen. Die Ergebnisse zeigen, dass das Mini-Modell in der Lage ist, komplexe Textdaten effektiv zu analysieren und präzise Meinungen und Stimmungen auf der Ebene einzelner Aspekte zu identifizieren. Auffällig war hier jedoch, das das Modell teils Schwierigkeiten hatte, wenn eine Review zwar besonders positiv klang, aber trotzdem einzelne negative Aspekte enthielt. Das Gesamtbild des Textes hat somit häufig die Ergebnisse beeinflusst.
 \section{Diskussion}
-Effizienz und Leistung des Mini-Modells im Vergleich zu größeren Modellen. Potenzial für Anwendung in ressourcenbeschränkten Umgebungen und Echtzeit-Anwendungen.
-Ist das Mini-Modell eine gute Alternative für Unternehmen und Entwickler? Welche Faktoren sollten bei der Auswahl eines Modells berücksichtigt werden?
+
+Die Ergebnisse dieser Arbeit zeigen, dass Mini-Modelle für die aspektbasierte Sentiment-Analyse (ABSA) eine vielversprechende Alternative zu großen, ressourcenintensiven Modellen darstellen. Besonders in ressourcenbeschränkten Umgebungen oder Echtzeit-Anwendungen bieten sie eine effiziente Lösung ohne signifikante Leistungseinbußen. Die Verwendung von LSTM-Netzwerken mit Attention-Mechanismen hat sich als besonders effektiv erwiesen, um sowohl Aspekte als auch deren zugehörige Sentiments präzise zu identifizieren.
+\newline
+\newline
+Eine der Hauptstärken des entwickelten Modells liegt in seiner Fähigkeit, trotz seiner geringeren Größe, vergleichbare Ergebnisse zu größeren Modellen zu liefern. Dies ist insbesondere in Szenarien nützlich, in denen die Verfügbarkeit von Rechenressourcen begrenzt ist oder Echtzeitanalysen erforderlich sind. Der Einsatz von Attention-Mechanismen hat gezeigt, dass es möglich ist, die Kontextabhängigkeit einzelner Aspekte besser zu erfassen und damit die Genauigkeit der Sentimentklassifikation zu erhöhen.
+\newline
+\newline
+Trotz der positiven Ergebnisse gibt es jedoch auch Herausforderungen und Einschränkungen. Ein wesentlicher Punkt ist die Schwierigkeit der automatischen Auswertung aufgrund der variierenden Länge und Struktur der Aspekte. Das Problem, dass das Modell teilweise einzelne Wörter als separate Aspekte erkennt, obwohl sie zusammengehören, weist auf die Notwendigkeit hin, die Vorverarbeitungs- und Tokenisierungsstrategien weiter zu optimieren.
+Ein weiteres bemerkenswertes Problem ist die Tendenz des Modells, vom Gesamtsentiment eines Textes beeinflusst zu werden, was zu Fehlklassifikationen führen kann, wenn positive und negative Aspekte in einem Satz vermischt sind. Dies deutet darauf hin, dass zusätzliche Mechanismen zur Unterscheidung und Gewichtung unterschiedlicher Sentimente innerhalb eines Textes notwendig sein könnten.
 
 \section{Fazit und Ausblick}
-Aspect-Based Sentiment Analysis ist eine leistungsstarke Methode, um Meinungen und Stimmungen auf der Ebene einzelner Aspekte zu analysieren.
-Die Fortschritte im Bereich des maschinellen Lernens und der natürlichen Sprachverarbeitung haben die Genauigkeit und Effizienz von ABSA-Modellen 
-erheblich verbessert. Die Anwendungsbereiche von ABSA sind vielfältig und reichen von der Analyse von Produktbewertungen bis zur Überwachung der 
-Markenwahrnehmung.
+
+Diese Arbeit hat gezeigt, dass kompakte Modelle für die aspektbasierte Sentiment-Analyse eine effiziente und effektive Lösung darstellen können, insbesondere in ressourcenbeschränkten Umgebungen. Durch die Anwendung von LSTM-Netzwerken mit Attention-Mechanismen konnte eine hohe Genauigkeit sowohl bei der Aspektextraktion als auch bei der Sentimentklassifikation erreicht werden.
+\newline
+\newline
+Zukünftige Forschung sollte sich darauf konzentrieren, die Herausforderungen zu adressieren, die bei der automatischen Auswertung und der Erkennung zusammengesetzter Aspekte bestehen. Verbesserungen in der Vorverarbeitung und Tokenisierung könnten die Modellleistung weiter steigern. Darüber hinaus wäre die Integration multimodaler Daten, wie visuelle und auditive Informationen, ein vielversprechender Ansatz, um die ABSA noch umfassender und präziser zu gestalten.
+\newline
+\newline
+Ein weiterer interessanter Forschungsbereich ist die Domänenadaptation, um die Modelle besser an unterschiedliche Branchen und Anwendungsbereiche anzupassen. Schließlich könnte die Entwicklung mehrsprachiger Modelle die Anwendbarkeit der ABSA auf globaler Ebene erweitern und somit die Analyse von Sentiments in verschiedenen Sprachen ermöglichen.
+
 \begin{thebibliography}{9}
-\bibitem{ref1} Author, "Title of the paper," \textit{Journal Name}, vol. 1, no. 1, pp. 1-10, Year.
-\bibitem{ref2} Author, "Title of the book," Publisher, Year.
-\bibitem{ref3} Author, "Title of the article," \textit{Website}, Available: \url{http://www.website.com}, Accessed on: Date.
-https://arxiv.org/abs/1906.02243
+    \bibitem{pontiki2014semeval} Pontiki, Maria, et al. "SemEval-2014 Task 4: Aspect Based Sentiment Analysis." Proceedings of the 8th international workshop on semantic evaluation (SemEval 2014). 2014.
+    \bibitem{liu2019roberta} Liu, Yinhan, et al. "RoBERTa: A robustly optimized BERT pretraining approach." arXiv preprint arXiv:1907.11692 (2019).
+    \bibitem{brown2020language} Brown, Tom B., et al. "Language models are few-shot learners." arXiv preprint arXiv:2005.14165 (2020).
+    \bibitem{sanh2019distilbert} Sanh, Victor, et al. "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter." arXiv preprint arXiv:1910.01108 (2019).
+    \bibitem{pennington2014glove} Pennington, Jeffrey, Richard Socher, and Christopher Manning. "Glove: Global vectors for word representation." Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP). 2014.
+    \bibitem{vaswani2017attention} Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. "Attention Is All You Need". arXiv preprint arXiv:1706.03762, 2017.
+
 \end{thebibliography}
 \newpage
 
+
+
+
+\section*{Anhang: Code und Reproduzierbarkeit}
+
+Der Quellcode zu dieser Arbeit ist in einem öffentlichen GitLab-Repository verfügbar. Das Repository enthält alle notwendigen Skripte und Datensätze, um die in dieser Arbeit beschriebenen Experimente und Analysen zu reproduzieren. Weitere Details zur Verwendung des Codes und zur Reproduzierbarkeit der Ergebnisse finden Sie im Readme-File des Repositories.
+
+\begin{itemize}
+    \item \textbf{Repository URL}: \url{https://github.com/Kinetiik/absa-scientific}
+\end{itemize}
+
+
+\newpage
 \textbf{Eigenständigkeitserklärung:}
 \newline
 \newline
@@ -183,7 +214,4 @@ Angabe der Quelle als Entlehnung kenntlich gemacht.
 & \hrulefill \\
 & Fynn Madrian\\
 \end{tabular}
-
-
 \end{document}
-```

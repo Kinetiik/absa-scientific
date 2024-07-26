@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2024.3.20)  25 JUL 2024 12:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2024.3.20)  26 JUL 2024 10:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -239,68 +239,90 @@ LaTeX Info: Redefining \lslig on input line 902.
 Package microtype Info: Loading configuration file microtype.cfg.
  (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
-)) (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+)) (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2024/02/07 v24.2 The Babel package
+\babel@savecnt=\count288
+\U@D=\dimen157
+\l@unhyphenated=\language89
+ (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count289
+ (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/babel-german/ngerman.ldf
+Language: ngerman 2024/01/19 v2.14 German support for babel (post-1996 orthography)
+ (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/babel-german/ngermanb.ldf
+Language: ngermanb 2024/01/19 v2.14 German support for babel (post-1996 orthography)
+Package babel Info: Making " an active character on input line 122.
+))) (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/babel/locale/de/babel-ngerman.tex
+Package babel Info: Importing font and identification data for ngerman
+(babel)             from babel-de.ini. Reported on input line 11.
+) (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count288
+\l__color_backend_stack_int=\count290
 \l__pdf_internal_box=\box54
 ) (./test.aux)
 \openout1 = `test.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
  (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count289
-\scratchdimen=\dimen157
+\scratchcounter=\count291
+\scratchdimen=\dimen158
 \scratchbox=\box55
-\nofMPsegments=\count290
-\nofMParguments=\count291
+\nofMPsegments=\count292
+\nofMParguments=\count293
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count292
-\MPscratchDim=\dimen158
-\MPnumerator=\count293
-\makeMPintoPDFobject=\count294
+\MPscratchCnt=\count294
+\MPscratchDim=\dimen159
+\MPnumerator=\count295
+\makeMPintoPDFobject=\count296
 \everyMPtoPDFconversion=\toks26
 ) (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+ (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
  (/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 13.
+Package hyperref Info: Link coloring OFF on input line 16.
  (./test.out) (./test.out)
 \@outlinefile=\write3
 \openout3 = `test.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 13.
-Package microtype Info: Applying patch `item' on input line 13.
-Package microtype Info: Applying patch `toc' on input line 13.
-Package microtype Info: Applying patch `eqnum' on input line 13.
-Package microtype Info: Applying patch `footnote' on input line 13.
-Package microtype Info: Applying patch `verbatim' on input line 13.
+LaTeX Info: Redefining \microtypecontext on input line 16.
+Package microtype Info: Applying patch `item' on input line 16.
+Package microtype Info: Applying patch `toc' on input line 16.
+Package microtype Info: Applying patch `eqnum' on input line 16.
+Package microtype Info: Applying patch `footnote' on input line 16.
+Package microtype Info: Applying patch `verbatim' on input line 16.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 13.
+LaTeX Info: Redefining \showhyphens on input line 16.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -318,96 +340,156 @@ Package microtype Info: Loading generic protrusion settings for font family
 \openout4 = `test.toc'.
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 38--61
+Underfull \hbox (badness 10000) in paragraph at lines 40--63
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--61
+Underfull \hbox (badness 10000) in paragraph at lines 40--63
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--61
+Underfull \hbox (badness 10000) in paragraph at lines 40--63
 
  []
 
 
-Overfull \hbox (3.61275pt too wide) in paragraph at lines 64--76
-\OT1/cmr/m/n/12 (-20) beson-dere durch die An-wen-dung von tiefen neu-ronalen Net-zen und Transformer-
+Overfull \hbox (3.61275pt too wide) in paragraph at lines 66--78
+\OT1/cmr/m/n/12 (-20) be-son-de-re durch die An-wen-dung von tie-fen neu-ro-na-len Net-zen und Transformer-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--76
+Underfull \hbox (badness 10000) in paragraph at lines 66--78
 
  []
 
 [3]
-Overfull \hbox (36.25099pt too wide) in paragraph at lines 79--99
-\OT1/cmr/m/n/12 (-20) ressourcenin-ten-siv und er-fordern gro^^Ye Rechenka-pazit^^?aten. In ressourcenbeschr^^?ankten
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 79--99
+Underfull \hbox (badness 10000) in paragraph at lines 81--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--99
+Underfull \hbox (badness 10000) in paragraph at lines 81--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--99
+Underfull \hbox (badness 10000) in paragraph at lines 81--100
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 103--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--99
-
- []
-
-[4] [5] [6] [7] [8] [9{/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 170--186
+Underfull \hbox (badness 10000) in paragraph at lines 103--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--186
+Underfull \hbox (badness 10000) in paragraph at lines 103--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--186
+Underfull \hbox (badness 10000) in paragraph at lines 103--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--186
+Underfull \hbox (badness 10000) in paragraph at lines 103--127
 
  []
 
-[11] (./test.aux)
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 130--149
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--149
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--149
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--149
+
+ []
+
+[7] [8] [9{/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 158--166
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--166
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 169--176
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--176
+
+ []
+
+[11] [12]
+Overfull \hbox (5.47821pt too wide) in paragraph at lines 196--197
+[]\OT1/cmr/bx/n/12 (-20) Repository URL\OT1/cmr/m/n/12 (-20) : []$\OT1/cmtt/m/n/12 https : / / github . com / Kinetiik / absa-[]scientific$[] 
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 201--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--217
+
+ []
+
+[14] (./test.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `test.out' has not changed.
-(rerunfilecheck)             Checksum: E6711AECDF3C9AF4962B6E32DA48A603;758.
+(rerunfilecheck)             Checksum: 927CE74F935C67D38B96772143F1ABFA;836.
  ) 
 Here is how much of TeX's memory you used:
- 11182 strings out of 474116
- 176602 string characters out of 5733619
- 1935187 words of memory out of 5000000
- 33273 multiletter control sequences out of 15000+600000
- 569396 words of font info for 132 fonts, out of 8000000 for 9000
+ 12346 strings out of 474116
+ 198418 string characters out of 5733619
+ 1943187 words of memory out of 5000000
+ 34405 multiletter control sequences out of 15000+600000
+ 568859 words of font info for 132 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,1257b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on test.pdf (11 pages, 125005 bytes).
+ 75i,8n,79p,1061b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on test.pdf (14 pages, 129488 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
- 29753 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 169 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
+ 27713 words of extra memory for PDF output out of 29859 (max. 10000000)
 
