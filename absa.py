@@ -159,15 +159,16 @@ sentiment_model.compile(optimizer=Adam(learning_rate=0.001), loss='categorical_c
 test_padded_reviews, test_aspect_labels, test_sentiment_labels, _, _, _ = convert_data(test_reviews, test_labels, tokenizer, embedding_matrix)
 
 # Train the models
-#aspect_model.fit(padded_reviews, aspect_labels, epochs=100, batch_size=512, validation_data=(test_padded_reviews, test_aspect_labels), callbacks=[callback])
-
-# Save the models
+aspect_model.fit(padded_reviews, aspect_labels, epochs=100, batch_size=512, validation_data=(test_padded_reviews, test_aspect_labels), callbacks=[callback])
 sentiment_model.fit(padded_reviews, sentiment_labels, epochs=100, batch_size=512, validation_data=(test_padded_reviews, test_sentiment_labels))
+# Save the models
 sentiment_model.save('sentiment_model_improved.h5')
+sentiment_model.save('aspect_model_improved.h5')
+#load the models
 sentiment_model = load_model('sentiment_model_improved.h5')
+aspect_model = load_model('aspect_model_improved.h5')
 
 
-aspect_model = load_model('aspect_model2.h5')
 # Evaluate the models
 aspect_loss, aspect_accuracy = aspect_model.evaluate(test_padded_reviews, test_aspect_labels)
 sentiment_loss, sentiment_accuracy = sentiment_model.evaluate(test_padded_reviews, test_sentiment_labels)
